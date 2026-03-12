@@ -2,79 +2,148 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<title>Rasy Psów</title>
+<title>Atlas Ras Psów</title>
 
 <style>
 
 :root{
-    --bg:#f2f2f2;
-    --card:#ffffff;
-    --text:#333;
-    --accent:#6b8e7a;
+--bg:#f2f2f2;
+--card:#ffffff;
+--text:#333;
 }
 
 body{
-    margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    transition:0.6s;
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:var(--bg);
+color:var(--text);
+transition:0.4s;
 }
 
 header{
-    text-align:center;
-    padding:40px;
+text-align:center;
+padding:40px 20px;
 }
 
 h1{
-    letter-spacing:2px;
+letter-spacing:2px;
+}
+
+.topbar{
+display:flex;
+justify-content:center;
+gap:10px;
+margin-bottom:20px;
+}
+
+.toggle{
+padding:8px 14px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+background:#555;
+color:white;
 }
 
 .container{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:30px;
-    padding:40px;
+display:flex;
+flex-wrap:wrap;
+gap:25px;
+justify-content:center;
+padding:30px;
 }
 
 .card{
-    background:var(--card);
-    width:250px;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
-    text-align:center;
-    transition:0.3s;
+width:230px;
+background:var(--card);
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+transition:0.3s;
 }
 
 .card:hover{
-    transform:translateY(-5px);
+transform:translateY(-5px);
 }
 
-button{
-    margin-top:10px;
-    padding:10px 18px;
-    border:none;
-    border-radius:8px;
-    background:var(--accent);
-    color:white;
-    cursor:pointer;
+.card img{
+width:100%;
+height:160px;
+object-fit:cover;
 }
 
-button:hover{
-    opacity:0.9;
+.card h3{
+margin:10px;
 }
+
+.card p{
+margin:10px;
+font-size:14px;
+}
+
+.card button{
+margin:10px;
+padding:8px 14px;
+border:none;
+border-radius:8px;
+color:white;
+cursor:pointer;
+}
+
+/* kolory ras */
+
+.labrador button{background:#d4a373;}
+.owczarek button{background:#6c757d;}
+.husky button{background:#5dade2;}
+.bulldog button{background:#c97c5d;}
+.beagle button{background:#b08968;}
+.pudel button{background:#9c89b8;}
+.rottweiler button{background:#7f5539;}
+.dalmatynczyk button{background:#495057;}
 
 .page{
-    display:none;
-    padding:40px;
-    max-width:800px;
-    margin:auto;
+display:none;
+max-width:900px;
+margin:auto;
+padding:30px;
+}
+
+.page img{
+width:100%;
+max-height:400px;
+object-fit:cover;
+border-radius:10px;
+margin-bottom:20px;
 }
 
 .back{
-    margin-top:30px;
+margin-top:20px;
+padding:10px 16px;
+border:none;
+border-radius:8px;
+background:#444;
+color:white;
+cursor:pointer;
+}
+
+.dark{
+--bg:#1e1e1e;
+--card:#2a2a2a;
+--text:#e6e6e6;
+}
+
+/* responsywność */
+
+@media(max-width:600px){
+
+.container{
+padding:10px;
+}
+
+.card{
+width:90%;
+}
+
 }
 
 </style>
@@ -83,28 +152,73 @@ button:hover{
 <body>
 
 <header>
-<h1>Rasy Psów</h1>
-<p>Wybierz rasę aby dowiedzieć się więcej</p>
+
+<h1>Atlas Ras Psów</h1>
+
+<div class="topbar">
+<button class="toggle" onclick="toggleDark()">Tryb jasny / ciemny</button>
+</div>
+
+<p>Kliknij rasę aby zobaczyć szczegóły</p>
+
 </header>
 
 <div class="container" id="main">
 
-<div class="card">
+<div class="card labrador">
+<img src="https://images.unsplash.com/photo-1558944351-cb6b4c3c0a3b">
 <h3>Labrador</h3>
-<p>Przyjazny i rodzinny pies.</p>
-<button onclick="showPage('labrador')">Czytaj więcej</button>
+<p>Przyjazny pies rodzinny</p>
+<button onclick="show('labrador')">Więcej</button>
 </div>
 
-<div class="card">
+<div class="card owczarek">
+<img src="https://images.unsplash.com/photo-1589941013453-ec89f33b5e95">
 <h3>Owczarek Niemiecki</h3>
-<p>Bardzo inteligentny i lojalny.</p>
-<button onclick="showPage('owczarek')">Czytaj więcej</button>
+<p>Bardzo inteligentny pies</p>
+<button onclick="show('owczarek')">Więcej</button>
 </div>
 
-<div class="card">
-<h3>Husky Syberyjski</h3>
-<p>Aktywny pies zaprzęgowy.</p>
-<button onclick="showPage('husky')">Czytaj więcej</button>
+<div class="card husky">
+<img src="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8">
+<h3>Husky</h3>
+<p>Pies zaprzęgowy</p>
+<button onclick="show('husky')">Więcej</button>
+</div>
+
+<div class="card bulldog">
+<img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b">
+<h3>Buldog</h3>
+<p>Spokojny pies domowy</p>
+<button onclick="show('bulldog')">Więcej</button>
+</div>
+
+<div class="card beagle">
+<img src="https://images.unsplash.com/photo-1507146426996-ef05306b995a">
+<h3>Beagle</h3>
+<p>Pies myśliwski</p>
+<button onclick="show('beagle')">Więcej</button>
+</div>
+
+<div class="card pudel">
+<img src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178">
+<h3>Pudel</h3>
+<p>Bardzo inteligentna rasa</p>
+<button onclick="show('pudel')">Więcej</button>
+</div>
+
+<div class="card rottweiler">
+<img src="https://images.unsplash.com/photo-1601758174114-e711c0cbaa69">
+<h3>Rottweiler</h3>
+<p>Silny pies obronny</p>
+<button onclick="show('rottweiler')">Więcej</button>
+</div>
+
+<div class="card dalmatynczyk">
+<img src="https://images.unsplash.com/photo-1568572933382-74d440642117">
+<h3>Dalmatyńczyk</h3>
+<p>Pies z charakterystycznymi kropkami</p>
+<button onclick="show('dalmatynczyk')">Więcej</button>
 </div>
 
 </div>
@@ -112,66 +226,93 @@ button:hover{
 <!-- PODSTRONY -->
 
 <div class="page" id="labrador">
-<h2>Labrador</h2>
-<p>
-Labrador retriever to jedna z najpopularniejszych ras na świecie.
-Są bardzo przyjazne, inteligentne i świetnie nadają się dla rodzin.
-</p>
+<img src="https://images.unsplash.com/photo-1558944351-cb6b4c3c0a3b">
+<h2>Labrador Retriever</h2>
+<p>Labrador to jedna z najpopularniejszych ras psów na świecie. Są bardzo przyjazne, inteligentne i łatwe w szkoleniu.</p>
 <button class="back" onclick="back()">Powrót</button>
 </div>
 
 <div class="page" id="owczarek">
+<img src="https://images.unsplash.com/photo-1589941013453-ec89f33b5e95">
 <h2>Owczarek Niemiecki</h2>
-<p>
-Owczarki niemieckie są niezwykle inteligentne i często pracują
-w policji, wojsku oraz jako psy ratownicze.
-</p>
+<p>Owczarki niemieckie są niezwykle inteligentne i często pracują w policji, wojsku i ratownictwie.</p>
 <button class="back" onclick="back()">Powrót</button>
 </div>
 
 <div class="page" id="husky">
+<img src="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8">
 <h2>Husky Syberyjski</h2>
-<p>
-Husky to psy zaprzęgowe znane z ogromnej energii
-i charakterystycznych niebieskich oczu.
-</p>
+<p>Husky to energiczne psy zaprzęgowe znane z wytrzymałości i charakterystycznych niebieskich oczu.</p>
+<button class="back" onclick="back()">Powrót</button>
+</div>
+
+<div class="page" id="bulldog">
+<img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b">
+<h2>Buldog Angielski</h2>
+<p>Buldogi są spokojne, przyjazne i bardzo przywiązują się do właścicieli.</p>
+<button class="back" onclick="back()">Powrót</button>
+</div>
+
+<div class="page" id="beagle">
+<img src="https://images.unsplash.com/photo-1507146426996-ef05306b995a">
+<h2>Beagle</h2>
+<p>Beagle to energiczne psy myśliwskie o świetnym węchu i przyjaznym charakterze.</p>
+<button class="back" onclick="back()">Powrót</button>
+</div>
+
+<div class="page" id="pudel">
+<img src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178">
+<h2>Pudel</h2>
+<p>Pudle należą do najbardziej inteligentnych ras psów i łatwo uczą się nowych komend.</p>
+<button class="back" onclick="back()">Powrót</button>
+</div>
+
+<div class="page" id="rottweiler">
+<img src="https://images.unsplash.com/photo-1601758174114-e711c0cbaa69">
+<h2>Rottweiler</h2>
+<p>Rottweilery są silnymi i lojalnymi psami często wykorzystywanymi jako psy stróżujące.</p>
+<button class="back" onclick="back()">Powrót</button>
+</div>
+
+<div class="page" id="dalmatynczyk">
+<img src="https://images.unsplash.com/photo-1568572933382-74d440642117">
+<h2>Dalmatyńczyk</h2>
+<p>Dalmatyńczyki słyną z czarnych kropek na białej sierści i ogromnej energii.</p>
 <button class="back" onclick="back()">Powrót</button>
 </div>
 
 <script>
 
-function showPage(id){
-    document.getElementById("main").style.display="none";
-    document.querySelectorAll(".page").forEach(p=>p.style.display="none");
-    document.getElementById(id).style.display="block";
+/* przełączanie ras */
+
+function show(id){
+document.getElementById("main").style.display="none"
+document.querySelectorAll(".page").forEach(p=>p.style.display="none")
+document.getElementById(id).style.display="block"
 }
 
 function back(){
-    document.querySelectorAll(".page").forEach(p=>p.style.display="none");
-    document.getElementById("main").style.display="flex";
+document.querySelectorAll(".page").forEach(p=>p.style.display="none")
+document.getElementById("main").style.display="flex"
 }
 
-/* ZMIANA MOTYWU PRZY KAŻDEJ WIZYCIE */
+/* tryb ciemny */
 
-const themes = [
-{bg:"#f2f2f2",card:"#ffffff",text:"#333",accent:"#6b8e7a"},
-{bg:"#e8ecef",card:"#ffffff",text:"#2c2c2c",accent:"#7a8fb5"},
-{bg:"#f4f1ed",card:"#ffffff",text:"#3a3a3a",accent:"#a07c6b"},
-{bg:"#eef3f0",card:"#ffffff",text:"#2f2f2f",accent:"#6b9a8b"}
-];
+function toggleDark(){
+document.body.classList.toggle("dark")
+}
 
-let index = localStorage.getItem("themeIndex");
-index = index ? parseInt(index)+1 : 0;
-if(index >= themes.length) index = 0;
+/* zmiana motywu przy każdej wizycie */
 
-localStorage.setItem("themeIndex", index);
+const colors=["#f2f2f2","#eef3f7","#f4f1ed","#eef7f2","#f8f9fa"]
 
-const theme = themes[index];
+let i=localStorage.getItem("bg")
+i=i?parseInt(i)+1:0
+if(i>=colors.length)i=0
 
-document.documentElement.style.setProperty("--bg",theme.bg);
-document.documentElement.style.setProperty("--card",theme.card);
-document.documentElement.style.setProperty("--text",theme.text);
-document.documentElement.style.setProperty("--accent",theme.accent);
+localStorage.setItem("bg",i)
+
+document.documentElement.style.setProperty("--bg",colors[i])
 
 </script>
 
