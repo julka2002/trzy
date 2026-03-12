@@ -1,70 +1,179 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Architektoniczny Kameleon</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,700&family=Spicy+Rice&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Rasy Psów</title>
+
+<style>
+
+:root{
+    --bg:#f2f2f2;
+    --card:#ffffff;
+    --text:#333;
+    --accent:#6b8e7a;
+}
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    transition:0.6s;
+}
+
+header{
+    text-align:center;
+    padding:40px;
+}
+
+h1{
+    letter-spacing:2px;
+}
+
+.container{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:30px;
+    padding:40px;
+}
+
+.card{
+    background:var(--card);
+    width:250px;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    text-align:center;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+button{
+    margin-top:10px;
+    padding:10px 18px;
+    border:none;
+    border-radius:8px;
+    background:var(--accent);
+    color:white;
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+.page{
+    display:none;
+    padding:40px;
+    max-width:800px;
+    margin:auto;
+}
+
+.back{
+    margin-top:30px;
+}
+
+</style>
 </head>
+
 <body>
 
-    <header class="main-header">
-        <h1>Architektoniczny Kameleon</h1>
-        <p>Gdy budynki żyją własnym życiem, a kolory nie mogą usiedzieć w miejscu.</p>
-    </header>
+<header>
+<h1>Rasy Psów</h1>
+<p>Wybierz rasę aby dowiedzieć się więcej</p>
+</header>
 
-    <main class="master-container">
-        
-        <section class="section-corbusier">
-            <div class="pilotis-base">
-                <div class="grid-layout">
-                    <div class="info-block">
-                        <h2>Le Corbusier</h2>
-                        <p class="manifest">"Dom to maszyna do mieszkania. <br>Porządek to pokój."</p>
-                        <a href="https://pl.wikipedia.org/wiki/Le_Corbusier" target="_blank" class="btn-corbu">URUCHOM MASZYNĘ</a>
-                    </div>
-                    <div class="building-block">
-                        <h3>Villa Savoye</h3>
-                        <p>To nie jest dom, to manifest na szczudłach. Idealnie biały, idealnie prosty i idealnie niepraktyczny, gdy pada deszcz (dach przeciekał od nowości, ale to detal!).</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+<div class="container" id="main">
 
-        <section class="section-hadid">
-            <div class="fluid-container">
-                <div class="content-flow">
-                    <h2>Zaha Hadid</h2>
-                    <p class="credo">"Grawitacja to tylko sugestia. Przestrzeń musi płynąć."</p>
-                    <div class="building-details">
-                        <h3>Centrum Hejdara Alijewa</h3>
-                        <p>Ten budynek nie ma początku ani końca. Wygląda jakby ktoś próbował narysować budynek, gdy skończył mu się atrament, a kartka zaczęła się zwijać.</p>
-                    </div>
-                    <a href="https://pl.wikipedia.org/wiki/Zaha_Hadid" target="_blank" class="btn-hadid">SURFUJ PO KRZYWYCH</a>
-                </div>
-            </div>
-        </section>
+<div class="card">
+<h3>Labrador</h3>
+<p>Przyjazny i rodzinny pies.</p>
+<button onclick="showPage('labrador')">Czytaj więcej</button>
+</div>
 
-        <section class="section-gaudi">
-            <div class="gaudi-wrapper">
-                <div class="organic-content">
-                    <h2>Antoni Gaudí</h2>
-                    <p class="nature-quote">"Natura nie tworzy linii prostych. Ja też nie."</p>
-                    <div class="building-info">
-                        <h3>Sagrada Família</h3>
-                        <p>Najpiękniejszy plac budowy świata. Wygląda jakby termity wzięły udział w konkursie rzeźbiarskim po zjedzeniu worka kolorowych szkiełek.</p>
-                    </div>
-                    <a href="https://pl.wikipedia.org/wiki/Antoni_Gaud%C3%AD" target="_blank" class="btn-gaudi">DOTKNIJ MOZAIKI</a>
-                </div>
-            </div>
-        </section>
+<div class="card">
+<h3>Owczarek Niemiecki</h3>
+<p>Bardzo inteligentny i lojalny.</p>
+<button onclick="showPage('owczarek')">Czytaj więcej</button>
+</div>
 
-    </main>
+<div class="card">
+<h3>Husky Syberyjski</h3>
+<p>Aktywny pies zaprzęgowy.</p>
+<button onclick="showPage('husky')">Czytaj więcej</button>
+</div>
 
-    <footer class="main-footer">
-        <p>Design spójny z postacią. Kod zasilany betonem, krzywymi i słońcem.</p>
-    </footer>
+</div>
+
+<!-- PODSTRONY -->
+
+<div class="page" id="labrador">
+<h2>Labrador</h2>
+<p>
+Labrador retriever to jedna z najpopularniejszych ras na świecie.
+Są bardzo przyjazne, inteligentne i świetnie nadają się dla rodzin.
+</p>
+<button class="back" onclick="back()">Powrót</button>
+</div>
+
+<div class="page" id="owczarek">
+<h2>Owczarek Niemiecki</h2>
+<p>
+Owczarki niemieckie są niezwykle inteligentne i często pracują
+w policji, wojsku oraz jako psy ratownicze.
+</p>
+<button class="back" onclick="back()">Powrót</button>
+</div>
+
+<div class="page" id="husky">
+<h2>Husky Syberyjski</h2>
+<p>
+Husky to psy zaprzęgowe znane z ogromnej energii
+i charakterystycznych niebieskich oczu.
+</p>
+<button class="back" onclick="back()">Powrót</button>
+</div>
+
+<script>
+
+function showPage(id){
+    document.getElementById("main").style.display="none";
+    document.querySelectorAll(".page").forEach(p=>p.style.display="none");
+    document.getElementById(id).style.display="block";
+}
+
+function back(){
+    document.querySelectorAll(".page").forEach(p=>p.style.display="none");
+    document.getElementById("main").style.display="flex";
+}
+
+/* ZMIANA MOTYWU PRZY KAŻDEJ WIZYCIE */
+
+const themes = [
+{bg:"#f2f2f2",card:"#ffffff",text:"#333",accent:"#6b8e7a"},
+{bg:"#e8ecef",card:"#ffffff",text:"#2c2c2c",accent:"#7a8fb5"},
+{bg:"#f4f1ed",card:"#ffffff",text:"#3a3a3a",accent:"#a07c6b"},
+{bg:"#eef3f0",card:"#ffffff",text:"#2f2f2f",accent:"#6b9a8b"}
+];
+
+let index = localStorage.getItem("themeIndex");
+index = index ? parseInt(index)+1 : 0;
+if(index >= themes.length) index = 0;
+
+localStorage.setItem("themeIndex", index);
+
+const theme = themes[index];
+
+document.documentElement.style.setProperty("--bg",theme.bg);
+document.documentElement.style.setProperty("--card",theme.card);
+document.documentElement.style.setProperty("--text",theme.text);
+document.documentElement.style.setProperty("--accent",theme.accent);
+
+</script>
 
 </body>
 </html>
